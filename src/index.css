@@ -1,1 +1,10 @@
 @import "tailwindcss";
+@plugin "tailwindcss-debug-screens" {
+  prefix: '';
+  
+}
+@layer utilities {
+  .debug-screens::before {
+    @apply text-8xl bg-white text-black p-0 m-0 ; 
+  }
+}
