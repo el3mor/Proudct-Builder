@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import {ButtonHTMLAttributes , ReactNode } from "react";
 
-interface IButtonProps {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   className: string;
   width?: "w-full" | "w-fit";
@@ -8,7 +8,7 @@ interface IButtonProps {
 
 const Button = ({children, className, width="w-full", ...rest}:IButtonProps) => {
   return (
-    <button className={`${width} ${className} rounded-md text-white p-2 cursor-pointer `} {...rest}>
+    <button className={`${width} ${className} rounded-md text-white p-2 cursor-pointer transition-colors duration-300 `} {...rest}>
       {children}
     </button>
   );
