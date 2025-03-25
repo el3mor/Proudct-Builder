@@ -1,4 +1,4 @@
-import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Dialog, DialogPanel, DialogTitle, Description } from '@headlessui/react'
 import { ReactNode } from 'react'
 
 interface IModalProps {
@@ -6,9 +6,10 @@ interface IModalProps {
   close: () => void
   children: ReactNode
   title?: string
+  description?: string
 }
 
-export default function Modal({children,isOpen,close,title}: IModalProps) {
+export default function Modal({children,isOpen,close,title, description}: IModalProps) {
   
 
   return (
@@ -25,6 +26,9 @@ export default function Modal({children,isOpen,close,title}: IModalProps) {
               {title && <DialogTitle as="h3" className="text-base/7 font-medium ">
                 {title}
               </DialogTitle>}
+              {description && <Description className="text-sm/5 text-gray-500 mt-2">
+                {description}
+              </Description>}
               <div className="mt-4">
               {children}
               </div>
