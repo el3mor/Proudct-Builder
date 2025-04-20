@@ -1,4 +1,4 @@
-import {ButtonHTMLAttributes , ReactNode } from "react";
+import {ButtonHTMLAttributes , memo, ReactNode } from "react";
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -14,4 +14,4 @@ const Button = ({children, className, width="w-full", ...rest}:IButtonProps) => 
   );
 }
 
-export default Button;
+export default memo(Button);

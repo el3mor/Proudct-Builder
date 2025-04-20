@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
 import ProductCard from './components/ProductCard';
 import Modal from './components/ui/Modal';
 import { categories, colorsList, formInputsList, productList } from './data';
@@ -42,16 +42,16 @@ function App() {
     colors: '',
   });
   console.log(productToEdit);
-  const open = () => setIsOpen(true);
+  const open = useCallback(() => setIsOpen(true),[])
   const close = () => setIsOpen(false);
-  const openEdit = () => setIsEditModelOpen(true);
-  const closeEdit = () => setIsEditModelOpen(false);
-  const openConfirmModal = () => setIsConfirmModalOpen(true);
+  const openEdit = useCallback(() => setIsEditModelOpen(true),[]);
+  const closeEdit = useCallback(() => setIsEditModelOpen(false),[]);
+  const openConfirmModal = useCallback(() => setIsConfirmModalOpen(true),[]);
   const closeConfirmModal = () => setIsConfirmModalOpen(false);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProduct({ ...prodcut, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: '' });
-  };
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setProduct(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setErrors(prev => ({ ...prev, [e.target.name]: '' }));
+  },[]);
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProductToEdit({ ...productToEdit, [e.target.name]: e.target.value });
   };

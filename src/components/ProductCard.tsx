@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ICategory, IProduct } from '../interfaces';
 import { numWithCommas } from '../utils/functions';
 import Button from './ui/Button';
@@ -49,4 +50,4 @@ const ProductCard = ({ product, setProductToEdit, openEdit,setSelectedCategory, 
   );
 };
 
-export default ProductCard;
+export default memo(ProductCard);
